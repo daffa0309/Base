@@ -1,0 +1,9 @@
+@import '../globals.scss';
+
+.count-col {
+    border-right: 1px solid $light;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    background-color: transparent   !important;
+}

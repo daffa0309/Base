@@ -1,0 +1,58 @@
+// Color constant
+$primary: #7366ff;
+$secondary: #f73164;
+$success: #51bb25;
+$info: #a927f9;
+$warning: #f8d62b;
+$danger: #dc3545;
+$light: #e8ebf2;
+$dark: #2c323f;
+
+:export {
+    primary: $primary;
+    secondary: $secondary;
+    danger: $danger;
+    warning: $warning;
+    success: $success;
+    danger: $danger;
+    light: $light;
+    dark: $dark;
+}
+
+// Window size constant (based on bootstrap)
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+$x2: 1600px;
+
+:export {
+    sm: $sm;
+    md: $md;
+    lg: $lg;
+    xl: $xl;
+    xxl: $xxl;
+    x2: $x2;
+}
+
+.card-trimmed {
+    border-radius: 0.25rem  !important;
+    box-shadow: 0 0 20px rgba(8, 21, 66, 0.1)   !important;
+
+    .card-body {
+        padding: 1.25rem   !important;
+    }
+}
+
+.align-sub {
+    vertical-align: sub;
+}
+
+.align-super {
+    vertical-align: super;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

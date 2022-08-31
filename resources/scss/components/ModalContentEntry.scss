@@ -1,0 +1,12 @@
+@import "../globals.scss";
+
+.title-entry {
+    background-color: $dark;
+    color: $light;
+
+    border-radius: 0.3rem;
+}
+
+.custom-radio {
+    margin-top: 0.2rem    !important;
+}
