@@ -38,6 +38,7 @@ function UserIndex(urlDatatable){
 
             $.get(url)
                 .done(function (data) {
+                    console.log(data);
                     $(".td-name").html(data.name);
                     $(".td-username").html(data.username);
                     $(".td-email").html(data.email);

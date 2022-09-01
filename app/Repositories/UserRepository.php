@@ -52,7 +52,7 @@ class UserRepository
                 if ($data->role_id == 1) {
                     return '<span class="badge rounded-pill badge-primary">Administrator</span>';
                 } elseif($data->role_id == 2){
-                    return '<span class="badge rounded-pill badge-success">Propinsi</span>';
+                    return '<span class="badge rounded-pill badge-success">Himatik</span>';
                 }
                     return '<span class="badge rounded-pill badge-secondary">Kabupaten</span>';
                 // return ucwords($data->role->name);
@@ -92,6 +92,8 @@ class UserRepository
                 'username'             => $data->username,
                 'foto'                 => $data->foto,
                 'whatsapp'             => $data->whatsapp,
+                'status'             => $data->status,
+
                 'slack'                => $data->slack,
                 'role_id'              => $data->role_id,
                 'role_name'            => $data->roles,

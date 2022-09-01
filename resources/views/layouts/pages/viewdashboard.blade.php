@@ -58,6 +58,7 @@
             viz = new tableau.Viz(containerDiv,
                 "{{ $setting->tableauserverexternal }}/trusted/{{ $ticket }}/t/BEI-WAS/views/{{ $menu->urlview }}?:embed=yes&:toolbar=no&:device=desktop"
                 );
+                console.log("{{ $setting->tableauserverexternal }}/trusted/{{ $ticket }}/t/BEI-WAS/views/{{ $menu->urlview }}?:embed=yes&:toolbar=no&:device=desktop");
                 // string(140) "https://idxbidev-portal.idx.co.id/trusted/giuZFpobT8eiTT0i4dSCng==:12FW5NKKJnXMbU3pw4i8RnXe/t/BEI-WAS/views/IDXBoard_16390364269560/IDXBoard"
                 // https://idxbidev-portal.idx.co.id/trusted/pBTNGtOUSSWYKmfj3H1K7Q==:8rodz38SvAdsymtXF1xhq4KG/t/BEI-WAS/views/IDXBoard_16390364269560/IDXBoard?:embed=yes&:toolbar=no&:device=desktop
             }

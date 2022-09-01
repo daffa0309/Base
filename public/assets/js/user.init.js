@@ -44,7 +44,7 @@ function UserIndex(urlDatatable){
                     $(".td-foto").html(data.foto);
                     $(".td-whatsapp").html(data.whatsapp);
                     $(".td-slack").html(data.slack);
-                    $(".td-status").html(data.status);
+                    $(".td-status").html(data.status == 1 ? 'Active' : 'Tidak Active');
                     $(".td-value").html(data.value);
                     $(".td-role_id").html(data.role_name.name);
 
