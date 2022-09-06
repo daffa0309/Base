@@ -25,11 +25,11 @@ class ViewdashboardController extends Controller
         })->first()) {
             $thisurl = $menu->urlview;
         } else {
-            dd('asas');
             return redirect('/')->with('warning', 'URL Not Found');
         }
 
         // $ticket = $this->getTicket();
+        
         $ticket = $this->anotherTicket();
         return view('layouts.pages.viewdashboard', compact('thisurl', 'name', 'menu', 'ticket', 'setting'));
     }
@@ -38,7 +38,7 @@ class ViewdashboardController extends Controller
         $setting    =   Settings::firstOrFail();
         $user       =   Auth::user()->name;
         $server     =   $setting->tableauserverexternal;
-        $targetsite = "BEI-WAS";
+        $targetsite = null;
 
         //extract data from the post
         extract($_POST);
@@ -64,11 +64,9 @@ class ViewdashboardController extends Controller
         curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER, $fields_string);
 
-
+        
         //execute post
         $response = curl_exec($ch);
-        dd($response);
-
         //close connection
         curl_close($ch);
         return $response;
@@ -79,7 +77,7 @@ class ViewdashboardController extends Controller
         $setting    =   Settings::firstOrFail();
         $user       =   Auth::user()->name;
         $server     =   $setting->tableauserverexternal;
-        $targetsite = "BEI-WAS";
+        $targetsite = null;
 
 
         extract($_POST);
@@ -96,7 +94,7 @@ class ViewdashboardController extends Controller
         }
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $certificate_location);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $certificate_location);
-        curl_setopt($ch, CURLOPT_URL, 'https://idxbidev-portal.idx.co.id/trusted');
+        curl_setopt($ch, CURLOPT_URL, 'http://127.0.0.1/trusted');
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER, $fields_string);
@@ -105,6 +103,7 @@ class ViewdashboardController extends Controller
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $result = curl_exec($ch);
+
         if (curl_errno($ch)) {
             echo 'Error:' . curl_error($ch);
         }

@@ -32,83 +32,11 @@
                             <div class="tab-pane fade show active" id="dashboard" role="tabpanel"
                                 aria-labelledby="dashboard-tab">
                                 <div class="card-body row pricing-content">
-                                    @foreach ($dashboardhomes as $dashboardhome)
-                                        @if ($dashboardhome->type_id == 1)
-                                            @foreach ($dashboardhome->images->sortBy('no') as $image)
-                                                <div class="col-xl-4 col-sm-6 xl-50 box-col-6">
-                                                    <div class="card text-center pricing-simple">
-                                                        <div class="card-body">
-                                                            <div class="img-container">
-                                                                <div class="my-gallery" id="aniimated-thumbnials"
-                                                                    itemscope="">
-                                                                    <figure itemprop="associatedMedia" itemscope="">
-                                                                        {{-- <a href="../assets/images/other-images/profile-style-img3.png" itemprop="contentUrl" data-size="1600x950"> --}}
-                                                                        <img class="img-fluid rounded"
-                                                                            src="{{ asset('storage/dashboard/' . $image->foto) }}"
-                                                                            itemprop="thumbnail" alt="gallery">
-                                                                        {{-- </a> --}}
-                                                                    </figure>
-                                                                </div>
-                                                            </div>
-                                                            <h6 class="mb-0">{{ $image->name }} </h6>
-                                                        </div><a class="btn btn-lg btn-primary btn-block"
-                                                            href="{{ url($image->url) }}">Go Somewhere</a>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        @endif
-                                    @endforeach
-
+                                <div id="vizContainer" width='100%' height='1000'>
+                        </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade " id="bottom-profile" role="tabpanel"
-                                aria-labelledby="profile-bottom-tab">
-                                <div class="card-body row pricing-content">
-                                    @foreach ($dashboardhomes as $dashboardhome)
-                                        @if ($dashboardhome->type_id == 2)
-                                            @foreach ($dashboardhome->tabs->sortBy('no') as $tab)
-                                                @if ($tab->type_id == 4)
-                                                    <div id="carouselExampleControls" class="carousel slide"
-                                                        data-bs-ride="carousel">
-                                                        <div class="carousel-inner text-center"
-                                                            style="background-color: #ecf3fa;">
-                                                            @php
-                                                                $i = 1;
-                                                            @endphp
-                                                            @foreach ($tab->slideshows->images as $image)
-                                                                <div class="carousel-item {{ $i == '1' ? 'active' : '' }}">
-                                                                    @php
-                                                                        $i++;
-                                                                    @endphp
-                                                                    <img class="d-blocktext-center"
-                                                                        src="{{ asset('storage/dashboard/' . $image->foto) }}"
-                                                                        alt="{{ $image->foto }}"
-                                                                        style="max-height: 800px;">
-                                                                    <div class="carousel-caption d-none d-md-block">
-                                                                        <h5>{{ $image->name }}</h5>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                        <button class="carousel-control-prev" type="button"
-                                                            data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                                            <span class="carousel-control-prev-icon"
-                                                                aria-hidden="true"></span>
-                                                            <span>Previous</span>
-                                                        </button>
-                                                        <button class="carousel-control-next" type="button"
-                                                            data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                                            <span class="carousel-control-next-icon"
-                                                                aria-hidden="true"></span>
-                                                            <span>Next</span>
-                                                        </button>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
+                         
                         </div>
                     </div>
                 </div>
@@ -119,5 +47,43 @@
 @endsection
 
 @section('script')
+<script src="http://localhost/javascripts/api/tableau-2.min.js"></script>
 
+<script>
+
+        var viz
+
+        function initViz() {
+            var containerDiv = document.getElementById("vizContainer")
+            // url = "https://public.tableau.com/views/DailyContributionMarginAnalysisforManufacturing/ManufacturingDailyAnalysis?:language=en-US&:display_count=n&:origin=viz_share_link";
+            // url = document.getElementById('tableau_frame').src;
+            viz = new tableau.Viz(containerDiv,
+                "{{ $setting->tableauserverexternal }}/trusted/{{ $ticket }}/views/Superstore/Overview?:embed=yes&:toolbar=no&:device=desktop"
+                );
+                // string(140) "https://idxbidev-portal.idx.co.id/trusted/giuZFpobT8eiTT0i4dSCng==:12FW5NKKJnXMbU3pw4i8RnXe/t/BEI-WAS/views/IDXBoard_16390364269560/IDXBoard"
+                // https://idxbidev-portal.idx.co.id/trusted/pBTNGtOUSSWYKmfj3H1K7Q==:8rodz38SvAdsymtXF1xhq4KG/t/BEI-WAS/views/IDXBoard_16390364269560/IDXBoard?:embed=yes&:toolbar=no&:device=desktop
+            }
+
+        initViz();
+
+        function exportToPDF() {
+            viz.showExportPDFDialog();
+        }
+
+        function exportToWorkbook() {
+            viz.showDownloadWorkbookDialog();
+        }
+
+        function exportToImage() {
+            viz.showExportImageDialog();
+        }
+
+        function exportToData() {
+            viz.showExportDataDialog();
+        }
+
+        function exportToCrosstab() {
+            viz.showExportCrossTabDialog();
+        }
+    </script>
 @endsection

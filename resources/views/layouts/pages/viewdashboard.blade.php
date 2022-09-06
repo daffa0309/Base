@@ -44,7 +44,7 @@
 @endsection
 
 @section('script')
-    <script src="https://idxbidev-portal.idx.co.id/javascripts/api/tableau-2.min.js"></script>
+    <script src="http://localhost/javascripts/api/tableau-2.min.js"></script>
     <!-- <script src="{{ asset('assets/js/tooltip.init.js') }}"></script> -->
 
 
@@ -56,9 +56,9 @@
             // url = "https://public.tableau.com/views/DailyContributionMarginAnalysisforManufacturing/ManufacturingDailyAnalysis?:language=en-US&:display_count=n&:origin=viz_share_link";
             // url = document.getElementById('tableau_frame').src;
             viz = new tableau.Viz(containerDiv,
-                "{{ $setting->tableauserverexternal }}/trusted/{{ $ticket }}/t/BEI-WAS/views/{{ $menu->urlview }}?:embed=yes&:toolbar=no&:device=desktop"
+                "{{ $setting->tableauserverexternal }}/trusted/{{ $ticket }}/views/{{ $menu->urlview }}?:embed=yes&:toolbar=no&:device=desktop"
                 );
-                console.log("{{ $setting->tableauserverexternal }}/trusted/{{ $ticket }}/t/BEI-WAS/views/{{ $menu->urlview }}?:embed=yes&:toolbar=no&:device=desktop");
+                console.log("{{ $setting->tableauserverexternal }}/trusted/{{ $ticket }}/t/views/{{ $menu->urlview }}?:embed=yes&:toolbar=no&:device=desktop");
                 // string(140) "https://idxbidev-portal.idx.co.id/trusted/giuZFpobT8eiTT0i4dSCng==:12FW5NKKJnXMbU3pw4i8RnXe/t/BEI-WAS/views/IDXBoard_16390364269560/IDXBoard"
                 // https://idxbidev-portal.idx.co.id/trusted/pBTNGtOUSSWYKmfj3H1K7Q==:8rodz38SvAdsymtXF1xhq4KG/t/BEI-WAS/views/IDXBoard_16390364269560/IDXBoard?:embed=yes&:toolbar=no&:device=desktop
             }
