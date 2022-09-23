@@ -52,7 +52,7 @@ class UserRepository
                 if ($data->role_id == 1) {
                     return '<span class="badge rounded-pill badge-primary">Administrator</span>';
                 } elseif($data->role_id == 2){
-                    return '<span class="badge rounded-pill badge-success">Himatik</span>';
+                    return '<span class="badge rounded-pill badge-success">User</span>';
                 }
                     return '<span class="badge rounded-pill badge-secondary">Kabupaten</span>';
                 // return ucwords($data->role->name);

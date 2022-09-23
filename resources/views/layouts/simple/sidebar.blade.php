@@ -30,11 +30,24 @@
                                 {{-- <p class="lan-2">{{ trans('lang.Dashboards,widgets & layout.') }}</p> --}}
                             </div>
                         </li>
+           
+                        @if($users->role_id == 1)
+
+                        <li class="sidebar-list">
+                            <a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName()=='menu.index' ? 'active' : '' }}" href="{{route('menu.index')}}">
+                                <i data-feather="home"> </i><span>Menu Management</span>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if($users->role_id == 2)
+
                         <li class="sidebar-list">
                             <a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName()=='dashboard' ? 'active' : '' }}" href="{{route('dashboard')}}">
                                 <i data-feather="home"> </i><span>Dashboard</span>
                             </a>
                         </li>
+                        @endif
 
                         {{-- looping menu disini --}}
                         @foreach ($menus as $menu)

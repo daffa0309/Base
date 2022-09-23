@@ -47,7 +47,11 @@ class AuthController extends Controller
                 throw $e;
             }
             DB::commit();
-            return redirect()->route('dashboard');
+            if (Auth::user()->role_id == 2) {
+                return redirect('/');
+            } else {
+                return redirect('menu-management');
+            }
         }
         # code...
         return redirect()->route('core.login')->with('error', 'Periksa kembali username atau password anda!');

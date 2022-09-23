@@ -17,8 +17,12 @@ class isSuperadmin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->roles->id == 1) {
-            return $next($request);
+            return redirect('menu-management');
         }
+        else{
             return redirect('dashboard');
+
+        }
+        return $next($request);
     }
 }
